@@ -171,10 +171,12 @@
 
 	pinctrl-0 = <&eth_pins>, <&eth_rgmii_pins>;
 	pinctrl-names = "default";
-	phy-mode = "rgmii-txid";
+	//phy-mode = "rgmii-txid";
+	phy-mode = "rgmii";
+	amlogic,tx-delay-ns = <2>;
 	phy-handle = <&external_phy>;
 
-	rx-internal-delay-ps = <800>;
+	//rx-internal-delay-ps = <800>;
 
 	snps,aal;
 	snps,rxpbl = <0x8>;
@@ -291,14 +293,32 @@
 };
 
 &cpu_opp_table {
+	opp-100000000 {
+		opp-hz = <0x00 100000000>;
+		opp-microvolt = <730000>;
+	};
+
+	opp-250000000 {
+		opp-hz = <0x00 250000000>;
+		opp-microvolt = <730000>;
+	};
+
+	opp-500000000 {
+		opp-hz = <0x00 500000000>;
+		opp-microvolt = <730000>;
+	};
+
+	opp-667000000 {
+		opp-hz = <0x00 667000000>;
+		opp-microvolt = <730000>;
+	};
+
 	opp-2016000000 {
-		opp-hz = /bits/ 64 <2016000000>;
-		opp-microvolt = <1000000>;
+		status = "disabled";
 	};
 
 	opp-2100000000 {
-		opp-hz = /bits/ 64 <2100000000>;
-		opp-microvolt = <1011000>;
+		status = "disabled";
 	};
 };
 
